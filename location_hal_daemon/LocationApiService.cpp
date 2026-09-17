@@ -52,6 +52,7 @@ using namespace std;
 #define MAX_GEOFENCE_COUNT (20)
 #define MAINT_TIMER_INTERVAL_MSEC (60000)
 #define AUTO_START_CLIENT_NAME "default"
+#define LOC_GNSS_LIB_NAME "libgnss.so.1"
 
 typedef void* (getLocationInterface)();
 typedef void  (createOSFramework)();
@@ -1881,7 +1882,7 @@ GnssInterface* LocationApiService::getGnssInterface() {
     if (nullptr == gnssInterface && !getGnssInterfaceFailed) {
         void * tempPtr = nullptr;
         getLocationInterface* getter = (getLocationInterface*)
-                dlGetSymFromLib(tempPtr, "libgnss.so", "getGnssInterface");
+                dlGetSymFromLib(tempPtr, LOC_GNSS_LIB_NAME, "getGnssInterface");
 
         if (nullptr == getter) {
             getGnssInterfaceFailed = true;
