@@ -9,7 +9,10 @@ AM_CFLAGS = \
 # HALDAEMON is requird only for msg.h
 
 ACLOCAL_AMFLAGS = -I m4
-AM_CPPFLAGS = -std=c++11
+AM_CPPFLAGS = \
+    -std=c++11 \
+    -I$(top_srcdir)/client_api/inc \
+    -I$(top_srcdir)/integration_api/inc
 
 requiredlibs = \
     $(GPSUTILS_LIBS) \
@@ -38,7 +41,9 @@ location_client_api_testapp_LDFLAGS = -lstdc++ -Wl,-z,defs -lpthread
 location_client_api_testapp_CPPFLAGS = $(AM_CFLAGS) $(AM_CPPFLAGS)
 endif
 
-location_client_api_testapp_LDADD = $(requiredlibs) -lstdc++ -lc -ldl
+location_client_api_testapp_LDADD = \
+    $(top_builddir)/client_api/liblocation_client_api.la \
+    $(top_builddir)/integration_api/liblocation_integration_api.la \
+    $(GPSUTILS_LIBS) -lstdc++ -lc -ldl
 
 bin_PROGRAMS = location_client_api_testapp
-
