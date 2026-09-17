@@ -174,6 +174,7 @@ AC_CONFIG_FILES([ \
         integration_api/Makefile \
         location_hal_daemon/Makefile \
         qapi/Makefile \
+        client_api_testapp/Makefile \
         location-apis.pc \
         ])
 

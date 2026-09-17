@@ -1,6 +1,6 @@
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = location_api_msg_proto loc_api/loc_api_v02 utils/loc_socket client_api integration_api location_hal_daemon qapi
+SUBDIRS = location_api_msg_proto loc_api/loc_api_v02 utils/loc_socket client_api integration_api location_hal_daemon qapi client_api_testapp
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = location-apis.pc
